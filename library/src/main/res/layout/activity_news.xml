@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModels"
+            type="com.millet.mylibrary.test.NewsViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".NewActivity">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="150pt"
+            android:layout_marginTop="200pt"
+            android:onClick="@{() -> viewModels.getDataClick()}"
+            android:text="@={viewModels.mNewsBean}"
+            android:textSize="35pt" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_marginTop="20pt"
+            android:text="arouter跳转"
+            android:onClick="@{() -> viewModels.webViewClick()}"
+            android:textSize="35pt"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+</layout>

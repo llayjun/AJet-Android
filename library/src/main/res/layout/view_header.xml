@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="127pt"
+    android:background="@color/color_ffffff"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/left_image"
+            android:layout_width="44pt"
+            android:layout_height="66pt"
+            android:layout_marginStart="45pt"
+            android:layout_marginLeft="45pt"
+            android:padding="10pt"
+            android:src="@mipmap/ic_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/left_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="45pt"
+            android:layout_marginLeft="45pt"
+            android:textColor="@color/color_000000"
+            android:textSize="46pt"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="返回" />
+
+        <TextView
+            android:id="@+id/middle_title"
+            android:layout_width="0pt"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_000000"
+            android:gravity="center"
+            android:textSize="52pt"
+            android:paddingStart="45pt"
+            android:maxLength="10"
+            android:paddingEnd="45pt"
+            android:ellipsize="end"
+            android:singleLine="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="标题标题标题标题标题标题标题标题标题标题标题" />
+
+        <ImageView
+            android:id="@+id/right_image"
+            android:layout_width="44pt"
+            android:layout_height="66pt"
+            android:layout_marginEnd="45pt"
+            android:layout_marginRight="45pt"
+            android:padding="10pt"
+            android:src="@mipmap/ic_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/right_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="45pt"
+            android:layout_marginRight="45pt"
+            android:textColor="@color/color_000000"
+            android:textSize="46pt"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="前进" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/view_line"
+        android:layout_width="match_parent"
+        android:layout_height="1pt"
+        android:background="@color/color_d8d8d8"
+        android:visibility="gone" />
+
+</LinearLayout>

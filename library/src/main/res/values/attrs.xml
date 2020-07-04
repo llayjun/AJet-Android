@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--HeadView-->
+    <declare-styleable name="HeadView">
+        <attr name="left_icon" format="reference" />
+        <attr name="left_text" format="string" />
+        <attr name="middle_text" format="string" />
+        <attr name="right_icon" format="reference" />
+        <attr name="right_text" format="string" />
+        <attr name="bottom_line" format="boolean" />
+    </declare-styleable>
+
+</resources>
