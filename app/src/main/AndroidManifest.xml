@@ -17,7 +17,7 @@
         android:theme="@style/AppTheme"
         tools:targetApi="n">
 
-        <activity android:name="com.millet.mylibrary.test.NewActivity">
+        <activity android:name="com.millet.mylibrary.test.NewBvmActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

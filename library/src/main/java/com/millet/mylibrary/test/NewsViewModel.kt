@@ -14,17 +14,17 @@ class NewsViewModel : BaseViewModel() {
     var mNewsBean = MutableLiveData<String>()
 
     fun getData() {
-        mShowDialog?.setValue(true)
+        mShowDialog.setValue(true)
         val disposable = Api.apiInstance
             .jueJin("5562b419e4b00c57d9b94ae2", "20", "android")
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                mShowDialog?.setValue(false)
+                mShowDialog.setValue(false)
                 mNewsBean.value = it
             }, {
-                mShowDialog?.setValue(false)
-                mThrowable?.value = it
+                mShowDialog.setValue(false)
+                mThrowable.value = it
             })
         addDisposable(disposable)
     }
@@ -35,6 +35,10 @@ class NewsViewModel : BaseViewModel() {
 
     fun webViewClick() {
         ARouter.getInstance().build(ARouterPath.ProtocolWeb).withString(Constant.Key.WebViewUrl, "http://www.baidu.com").navigation()
+    }
+
+    override fun onCreate() {
+        super.onCreate()
     }
 
 }

@@ -1,29 +1,32 @@
 package com.millet.mylibrary.lifecycle
 
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
 import com.millet.mylibrary.bean.DialogBean
+import com.millet.mylibrary.mvvm.ViewModelLifecycle
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
 /**
  * BaseViewModel
  */
-open class BaseViewModel : ViewModel() {
+abstract class BaseViewModel : ViewModel(), ViewModelLifecycle {
+
+    private lateinit var lifecycleOwner: LifecycleOwner
 
     // 管理RxJava请求
     public var mCompositeDisposable: CompositeDisposable? = null
 
     // 管理通知Activity/Fragment是否显示等待的Dialog
-    public var mShowDialog: DialogLiveData<DialogBean>? = DialogLiveData<DialogBean>()
+    public var mShowDialog: DialogLiveData<DialogBean> = DialogLiveData<DialogBean>()
 
     // 当ViewModel层出现错误需要通知到Activity／Fragment
-    public var mThrowable: MutableLiveData<Throwable>? = MutableLiveData<Throwable>()
+    public var mThrowable: MutableLiveData<Throwable> = MutableLiveData<Throwable>()
 
     // 当ViewModel层请求正确但数据不对需要通知到Activity／Fragment
-    public var mToast: MutableLiveData<String>? = MutableLiveData<String>()
+    public var mToast: MutableLiveData<String> = MutableLiveData<String>()
+
+    // 当ViewModel层请求关闭界面时候通知到Activity / Fragment
+    public var mFinish: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
 
     /**
      * 添加 RxJava 发出的请求
@@ -39,7 +42,7 @@ open class BaseViewModel : ViewModel() {
      */
     fun getShowDialog(owner: LifecycleOwner?, observer: Observer<DialogBean>?) {
         if (owner != null && observer != null) {
-            mShowDialog?.observe(owner, observer)
+            mShowDialog.observe(owner, observer)
         }
     }
 
@@ -48,7 +51,7 @@ open class BaseViewModel : ViewModel() {
      */
     fun getThrowable(owner: LifecycleOwner?, observer: Observer<Throwable?>?) {
         if (owner != null && observer != null) {
-            mThrowable?.observe(owner, observer)
+            mThrowable.observe(owner, observer)
         }
     }
 
@@ -56,7 +59,14 @@ open class BaseViewModel : ViewModel() {
      * 监听mToast
      */
     fun getToast(owner: LifecycleOwner, observer: Observer<String>) {
-        mToast?.observe(owner, observer)
+        mToast.observe(owner, observer)
+    }
+
+    /**
+     * 监听mFinish
+     */
+    fun getFinish(owner: LifecycleOwner, observer: Observer<Boolean>) {
+        mFinish.observe(owner, observer)
     }
 
     /**
@@ -68,9 +78,34 @@ open class BaseViewModel : ViewModel() {
             mCompositeDisposable?.dispose()
             mCompositeDisposable = null
         }
-        mShowDialog = null
-        mThrowable = null
-        mToast = null
+    }
+
+    override fun onAny(owner: LifecycleOwner, event: Lifecycle.Event) {
+        this.lifecycleOwner = owner
+    }
+
+    override fun onCreate() {
+
+    }
+
+    override fun onStart() {
+
+    }
+
+    override fun onResume() {
+
+    }
+
+    override fun onPause() {
+
+    }
+
+    override fun onStop() {
+
+    }
+
+    override fun onDestroy() {
+
     }
 
 }

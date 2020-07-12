@@ -1,4 +1,4 @@
-package com.millet.mylibrary.base
+package com.millet.mylibrary.mvvm
 
 import android.app.Application
 import com.blankj.utilcode.util.Utils

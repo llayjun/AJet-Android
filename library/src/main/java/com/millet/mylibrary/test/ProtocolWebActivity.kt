@@ -11,7 +11,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.blankj.utilcode.util.ThreadUtils
 import com.millet.mylibrary.BuildConfig
 import com.millet.mylibrary.R
-import com.millet.mylibrary.base.BaseNoModelActivity
+import com.millet.mylibrary.mvvm.BaseBindingActivity
 import com.millet.mylibrary.constant.ARouterPath
 import com.millet.mylibrary.constant.Constant
 import com.millet.mylibrary.databinding.ActivityProtocolBinding
@@ -28,10 +28,14 @@ import wendu.dsbridge.DWebView
  * @date  2020/6/29 6:02 PM
  */
 @Route(path = ARouterPath.ProtocolWeb)
-class ProtocolWebActivity : BaseNoModelActivity<ActivityProtocolBinding>() {
+class ProtocolWebActivity : BaseBindingActivity<ActivityProtocolBinding>() {
 
     override fun getLayoutId(): Int {
         return R.layout.activity_protocol
+    }
+
+    override fun initData(savedInstanceState: Bundle?) {
+
     }
 
     @SuppressLint("SetJavaScriptEnabled")

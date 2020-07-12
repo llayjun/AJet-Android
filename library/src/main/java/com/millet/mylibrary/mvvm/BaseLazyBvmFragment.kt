@@ -1,4 +1,4 @@
-package com.millet.mylibrary.base
+package com.millet.mylibrary.mvvm
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
 import com.millet.mylibrary.lifecycle.BaseViewModel
 
-abstract class BaseLazyFragment<VM : BaseViewModel, DB : ViewDataBinding> : BaseFragment<VM, DB>() {
+abstract class BaseLazyBvmFragment<VM : BaseViewModel, DB : ViewDataBinding> : BaseBvmFragment<VM, DB>() {
 
     // 懒加载
     private var createView = false

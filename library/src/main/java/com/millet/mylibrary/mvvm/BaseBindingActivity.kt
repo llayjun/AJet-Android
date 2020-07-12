@@ -1,4 +1,4 @@
-package com.millet.mylibrary.base
+package com.millet.mylibrary.mvvm
 
 import android.content.Context
 import android.content.res.Resources
@@ -7,7 +7,6 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.AdaptScreenUtils
 import com.blankj.utilcode.util.NetworkUtils
 import com.blankj.utilcode.util.ToastUtils
@@ -18,13 +17,13 @@ import org.json.JSONException
 import java.net.ConnectException
 import java.net.SocketTimeoutException
 
-abstract class BaseNoModelActivity<DB : ViewDataBinding> : AppCompatActivity() {
+abstract class BaseBindingActivity<DB : ViewDataBinding> : AppCompatActivity() {
 
-    var mDataBinding: DB? = null
+    lateinit var mDataBinding: DB
 
-    private var mContext: Context? = null
+    private lateinit var mContext: Context
 
-    private var mLoadingDialog: LoadingDialog? = null
+    private lateinit var mLoadingDialog: LoadingDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +31,9 @@ abstract class BaseNoModelActivity<DB : ViewDataBinding> : AppCompatActivity() {
         initWindow(savedInstanceState)
         setContentView(getLayoutId())
         mDataBinding = initDataBinding(getLayoutId())
+        mDataBinding.lifecycleOwner = this
         ActivityUtil.getInstance()?.addActivity(this)
+        initData(savedInstanceState)
         initView(savedInstanceState)
         loadData(savedInstanceState)
     }
@@ -53,6 +54,11 @@ abstract class BaseNoModelActivity<DB : ViewDataBinding> : AppCompatActivity() {
     open fun initDataBinding(@LayoutRes layoutId: Int): DB {
         return DataBindingUtil.setContentView(this, getLayoutId())
     }
+
+    /**
+     * 初始化数据
+     */
+    protected abstract fun initData(savedInstanceState: Bundle?)
 
     /**
      * 初始化视图
@@ -77,20 +83,17 @@ abstract class BaseNoModelActivity<DB : ViewDataBinding> : AppCompatActivity() {
      * 显示用户等待框
      */
     protected open fun showDialog() {
-        if (mLoadingDialog == null) {
-            mLoadingDialog = LoadingDialog.create(this, "加载中...", false, null)
-        }
-        if (!mLoadingDialog?.isShowing!!)
-            mLoadingDialog?.show()
+        mLoadingDialog = LoadingDialog.create(this, "加载中...", false, null)!!
+        if (!mLoadingDialog.isShowing)
+            mLoadingDialog.show()
     }
 
     /**
      * 隐藏等待框
      */
     protected open fun dismissDialog() {
-        if (mLoadingDialog != null && mLoadingDialog!!.isShowing) {
-            mLoadingDialog?.dismiss()
-            mLoadingDialog = null
+        if (mLoadingDialog.isShowing) {
+            mLoadingDialog.dismiss()
         }
     }
 
@@ -112,7 +115,7 @@ abstract class BaseNoModelActivity<DB : ViewDataBinding> : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        mDataBinding?.unbind()
+        mDataBinding.unbind()
         ActivityUtil.getInstance()?.removeActivity(this)
     }
 
