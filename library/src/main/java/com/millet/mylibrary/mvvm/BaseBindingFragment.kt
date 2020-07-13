@@ -34,14 +34,16 @@ abstract class BaseBindingFragment<DB : ViewDataBinding> : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        mDataBinding = initDataBinding(inflater, getLayoutId(), container)
-        mDataBinding.lifecycleOwner = this
+        mLoadingDialog = LoadingDialog.create(mContext, "加载中...", false, null)!!
+        initDataBinding(inflater, getLayoutId(), container)
+        init(savedInstanceState)
         return mDataBinding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         mActivity = requireActivity()
+        initData(savedInstanceState)
         initView(savedInstanceState)
         loadData(savedInstanceState)
     }
@@ -54,9 +56,20 @@ abstract class BaseBindingFragment<DB : ViewDataBinding> : Fragment() {
     /**
      * 初始化DataBinding
      */
-    protected open fun initDataBinding(inflater: LayoutInflater?, @LayoutRes layoutId: Int, container: ViewGroup?): DB {
-        return DataBindingUtil.inflate(inflater!!, layoutId, container, false)
+    protected open fun initDataBinding(inflater: LayoutInflater?, @LayoutRes layoutId: Int, container: ViewGroup?) {
+        mDataBinding = DataBindingUtil.inflate(inflater!!, layoutId, container, false)
+        mDataBinding.lifecycleOwner = this
     }
+
+    /**
+     * 初始化viewModel
+     */
+    protected open fun init(savedInstanceState: Bundle?) {}
+
+    /**
+     * 初始化
+     */
+    protected abstract fun initData(savedInstanceState: Bundle?)
 
     /**
      * 初始化视图

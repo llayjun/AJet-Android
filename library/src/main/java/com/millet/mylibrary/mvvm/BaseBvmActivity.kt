@@ -1,5 +1,6 @@
 package com.millet.mylibrary.mvvm
 
+import android.os.Bundle
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -11,19 +12,14 @@ abstract class BaseBvmActivity<VM : BaseViewModel, DB : ViewDataBinding> : BaseB
 
     lateinit var mViewModel: VM
 
-    override fun initDataBinding(layoutId: Int): DB {
-        val db = super.initDataBinding(layoutId)
-        mViewModel = initViewModel()
+    override fun init(savedInstanceState: Bundle?) {
+        val vm = createViewModel()
+        mViewModel = ViewModelProvider(this, BaseViewModel.createViewModelFactory(vm)).get(vm::class.java)
         lifecycle.addObserver(mViewModel)
         initObserve()
-        return db
-    }
-
-    /**
-     * 将initVieModel暴露出去，方便子类自己判断共享ViewModel
-     */
-    private fun initViewModel(): VM {
-        return ViewModelProvider(this).get(createViewModel()::class.java)
+        initData(savedInstanceState)
+        initView(savedInstanceState)
+        loadData(savedInstanceState)
     }
 
     protected abstract fun createViewModel(): VM

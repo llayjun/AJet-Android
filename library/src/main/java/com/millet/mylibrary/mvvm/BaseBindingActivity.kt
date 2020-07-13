@@ -28,11 +28,10 @@ abstract class BaseBindingActivity<DB : ViewDataBinding> : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mContext = this
+        mLoadingDialog = LoadingDialog.create(this, "加载中...", false, null)!!
         initWindow(savedInstanceState)
-        setContentView(getLayoutId())
-        mDataBinding = initDataBinding(getLayoutId())
-        mDataBinding.lifecycleOwner = this
-        ActivityUtil.getInstance()?.addActivity(this)
+        initDataBinding(getLayoutId())
+        init(savedInstanceState)
         initData(savedInstanceState)
         initView(savedInstanceState)
         loadData(savedInstanceState)
@@ -51,12 +50,18 @@ abstract class BaseBindingActivity<DB : ViewDataBinding> : AppCompatActivity() {
     /**
      * 初始化DataBinding
      */
-    open fun initDataBinding(@LayoutRes layoutId: Int): DB {
-        return DataBindingUtil.setContentView(this, getLayoutId())
+    private fun initDataBinding(@LayoutRes layoutId: Int) {
+        mDataBinding = DataBindingUtil.setContentView(this, layoutId)
+        mDataBinding.lifecycleOwner = this
     }
 
     /**
-     * 初始化数据
+     * 初始化viewModel
+     */
+    protected open fun init(savedInstanceState: Bundle?) {}
+
+    /**
+     * 初始化
      */
     protected abstract fun initData(savedInstanceState: Bundle?)
 
@@ -83,7 +88,6 @@ abstract class BaseBindingActivity<DB : ViewDataBinding> : AppCompatActivity() {
      * 显示用户等待框
      */
     protected open fun showDialog() {
-        mLoadingDialog = LoadingDialog.create(this, "加载中...", false, null)!!
         if (!mLoadingDialog.isShowing)
             mLoadingDialog.show()
     }
@@ -116,7 +120,6 @@ abstract class BaseBindingActivity<DB : ViewDataBinding> : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         mDataBinding.unbind()
-        ActivityUtil.getInstance()?.removeActivity(this)
     }
 
 }

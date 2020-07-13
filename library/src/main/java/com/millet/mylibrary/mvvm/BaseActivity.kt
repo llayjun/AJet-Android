@@ -5,7 +5,6 @@ import android.content.res.Resources
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.blankj.utilcode.util.AdaptScreenUtils
-import com.millet.mylibrary.util.ActivityUtil
 
 /**
  * @author  zyl
@@ -20,7 +19,6 @@ abstract class BaseActivity : AppCompatActivity() {
         mContext = this
         initWindow(savedInstanceState)
         setContentView(getLayoutId())
-        ActivityUtil.getInstance()?.addActivity(this)
         initView(savedInstanceState)
         loadData(savedInstanceState)
     }
@@ -54,11 +52,6 @@ abstract class BaseActivity : AppCompatActivity() {
      */
     override fun getResources(): Resources? {
         return AdaptScreenUtils.adaptWidth(super.getResources(), 1080)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        ActivityUtil.getInstance()?.removeActivity(this)
     }
 
 }
