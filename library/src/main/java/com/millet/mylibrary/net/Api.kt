@@ -1,6 +1,7 @@
-package com.millet.mylibrary.retrofit
+package com.millet.mylibrary.net
 
 import com.blankj.utilcode.util.Utils
+import com.millet.mylibrary.net.interceptor.LoggingInterceptor
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import java.io.File

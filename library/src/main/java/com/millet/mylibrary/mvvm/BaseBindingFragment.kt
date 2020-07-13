@@ -13,7 +13,7 @@ import androidx.fragment.app.FragmentActivity
 import com.blankj.utilcode.util.NetworkUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.millet.mylibrary.R
-import com.millet.mylibrary.dialog.LoadingDialog
+import com.millet.mylibrary.ui.dialog.LoadingDialog
 import org.json.JSONException
 import java.net.ConnectException
 import java.net.SocketTimeoutException

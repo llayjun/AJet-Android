@@ -1,4 +1,4 @@
-package com.millet.mylibrary.lifecycle
+package com.millet.mylibrary.mvvm.vm
 
 import androidx.lifecycle.*
 import com.millet.mylibrary.bean.DialogBean

@@ -1,4 +1,4 @@
-package com.millet.mylibrary.widget.decoration
+package com.millet.mylibrary.ui.widget.decoration
 
 import android.graphics.Rect
 import android.view.View

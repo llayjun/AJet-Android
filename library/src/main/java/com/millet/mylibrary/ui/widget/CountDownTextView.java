@@ -1,4 +1,4 @@
-package com.millet.mylibrary.widget;
+package com.millet.mylibrary.ui.widget;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

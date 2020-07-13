@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
 import com.blankj.utilcode.util.ToastUtils
 import com.millet.mylibrary.bean.DialogBean
-import com.millet.mylibrary.lifecycle.BaseViewModel
+import com.millet.mylibrary.mvvm.vm.BaseViewModel
 
 abstract class BaseBvmFragment<VM : BaseViewModel, DB : ViewDataBinding> : BaseBindingFragment<DB>() {
 

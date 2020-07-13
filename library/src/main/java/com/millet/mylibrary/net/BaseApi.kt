@@ -1,4 +1,4 @@
-package com.millet.mylibrary.retrofit
+package com.millet.mylibrary.net
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

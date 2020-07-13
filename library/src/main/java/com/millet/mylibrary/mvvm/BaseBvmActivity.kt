@@ -5,7 +5,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.blankj.utilcode.util.ToastUtils
 import com.millet.mylibrary.bean.DialogBean
-import com.millet.mylibrary.lifecycle.BaseViewModel
+import com.millet.mylibrary.mvvm.vm.BaseViewModel
 
 abstract class BaseBvmActivity<VM : BaseViewModel, DB : ViewDataBinding> : BaseBindingActivity<DB>() {
 

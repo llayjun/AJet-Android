@@ -1,10 +1,9 @@
-package com.millet.mylibrary.dialog;
+package com.millet.mylibrary.ui.dialog;
 
 
 import android.app.Dialog;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,9 +20,9 @@ import com.millet.mylibrary.R;
 
 
 /**
- * DialogBottomFragment 的基类，从底部弹出来
+ * DialogFragment 的基类
  */
-public abstract class BaseBottomDialogFragment extends DialogFragment {
+public abstract class BaseDialogFragment extends DialogFragment {
     /* 默认的背景透明度 */
     private final float DEF_VISIBLE_ALPHA = 0.5f;
     /* 是否使用 dialog 的百分比尺寸 */
@@ -54,7 +53,7 @@ public abstract class BaseBottomDialogFragment extends DialogFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setStyle(DialogFragment.STYLE_NO_TITLE, R.style.BottomDialogFragment);
+        setStyle(DialogFragment.STYLE_NO_TITLE, R.style.DialogNoTitleStyle);
     }
 
     @Nullable
@@ -125,9 +124,14 @@ public abstract class BaseBottomDialogFragment extends DialogFragment {
             if (hp < 0) {
                 hp = ViewGroup.LayoutParams.WRAP_CONTENT;
             }
-            dialog.getWindow().setLayout(
-                    wp == ViewGroup.LayoutParams.WRAP_CONTENT ? ViewGroup.LayoutParams.WRAP_CONTENT : (int) (dm.widthPixels * wp),
-                    hp == ViewGroup.LayoutParams.WRAP_CONTENT ? ViewGroup.LayoutParams.WRAP_CONTENT : (int) (dm.heightPixels * hp));
+            if (wp == 1 && hp == 1) {
+                Window window = dialog.getWindow();
+                window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            } else {
+                dialog.getWindow().setLayout(
+                        wp == ViewGroup.LayoutParams.WRAP_CONTENT ? ViewGroup.LayoutParams.WRAP_CONTENT : (int) (dm.widthPixels * wp),
+                        hp == ViewGroup.LayoutParams.WRAP_CONTENT ? ViewGroup.LayoutParams.WRAP_CONTENT : (int) (dm.heightPixels * hp));
+            }
         }
     }
 
@@ -156,7 +160,6 @@ public abstract class BaseBottomDialogFragment extends DialogFragment {
         WindowManager.LayoutParams lp = window.getAttributes();
         lp.dimAmount = bgAlpha;
         lp.flags |= WindowManager.LayoutParams.FLAG_DIM_BEHIND;
-        lp.gravity = Gravity.BOTTOM;
         window.setAttributes(lp);
     }
 }

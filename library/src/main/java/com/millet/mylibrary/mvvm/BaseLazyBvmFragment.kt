@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
-import com.millet.mylibrary.lifecycle.BaseViewModel
+import com.millet.mylibrary.mvvm.vm.BaseViewModel
 
 abstract class BaseLazyBvmFragment<VM : BaseViewModel, DB : ViewDataBinding> : BaseBvmFragment<VM, DB>() {
 

@@ -1,4 +1,4 @@
-package com.millet.mylibrary.dialog
+package com.millet.mylibrary.ui.dialog
 
 import android.app.Activity
 import android.content.Context

@@ -14,7 +14,7 @@ class NewBvmActivity : BaseBvmActivity<NewsViewModel, ActivityNewsBinding>() {
     override fun initData(savedInstanceState: Bundle?) {
         //允许绑定观察ViewModel中的LiveData数据，当LiveData数据更新时，布局会自动更新数据
         mDataBinding.viewModels = mViewModel
-        mViewModel.mNewsBean.observe(this, Observer {
+        mViewModel.mInfoBean.observe(this, Observer {
             ToastUtils.showShort(it.toString())
         })
     }

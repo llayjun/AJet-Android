@@ -1,4 +1,4 @@
-package com.millet.mylibrary.retrofit
+package com.millet.mylibrary.net
 
 import com.millet.mylibrary.bean.request.LoginRequestBean
 import com.millet.mylibrary.bean.request.PersonUserInfoRequestBean

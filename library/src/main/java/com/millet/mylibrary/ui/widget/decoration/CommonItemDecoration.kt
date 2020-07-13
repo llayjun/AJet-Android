@@ -1,4 +1,4 @@
-package com.millet.mylibrary.widget.decoration
+package com.millet.mylibrary.ui.widget.decoration
 
 import android.R
 import android.content.Context
