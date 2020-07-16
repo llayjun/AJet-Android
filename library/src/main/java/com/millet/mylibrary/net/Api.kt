@@ -13,7 +13,9 @@ class Api : BaseApi() {
      * 静态内部类单例
      */
     private object ApiHolder {
+
         private val api = Api()
+
         val apiService: ApiService
            get() = api.initRetrofit(ApiService.BASE_URL)!!.create(
                 ApiService::class.java

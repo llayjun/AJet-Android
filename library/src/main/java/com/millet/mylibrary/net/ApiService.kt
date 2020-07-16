@@ -14,11 +14,11 @@ interface ApiService {
 
     // 掘金接口
     @GET("get_entry_by_timeline")
-    fun jueJin(
+    suspend fun jueJin(
         @Query("category") category: String?,
         @Query("limit") limit: String?,
         @Query("src") src: String?
-    ): Observable<String?>
+    ): String
 
     // 个人用户
     // 获取验证码
