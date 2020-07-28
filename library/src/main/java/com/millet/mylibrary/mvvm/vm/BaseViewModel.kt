@@ -5,6 +5,10 @@ import com.millet.mylibrary.bean.DialogBean
 import com.millet.mylibrary.mvvm.ViewModelLifecycle
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
 
 /**
  * BaseViewModel
@@ -27,6 +31,28 @@ abstract class BaseViewModel : ViewModel(), ViewModelLifecycle {
 
     // 当ViewModel层请求关闭界面时候通知到Activity / Fragment
     public var mFinish: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
+
+    /**
+     * 使用协程
+     */
+    fun launchUI(
+        block: suspend CoroutineScope.() -> Unit = {}
+        , error: suspend CoroutineScope.(Throwable) -> Unit = {}
+        , complete: suspend CoroutineScope.() -> Unit = {}
+    ) {
+        viewModelScope.launch(Dispatchers.Main) {
+            try {
+                mShowDialog.setValue(true)
+                block()
+            } catch (e: Throwable) {
+                mThrowable.value = e
+                error(e)
+            } finally {
+                mShowDialog.setValue(false)
+                complete()
+            }
+        }
+    }
 
     /**
      * 添加 RxJava 发出的请求
@@ -74,6 +100,7 @@ abstract class BaseViewModel : ViewModel(), ViewModelLifecycle {
      */
     override fun onCleared() {
         super.onCleared()
+        viewModelScope.cancel()
         if (mCompositeDisposable != null) {
             mCompositeDisposable?.dispose()
             mCompositeDisposable = null
