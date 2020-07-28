@@ -17,9 +17,6 @@ abstract class BaseBvmActivity<VM : BaseViewModel, DB : ViewDataBinding> : BaseB
         mViewModel = ViewModelProvider(this, BaseViewModel.createViewModelFactory(vm)).get(vm::class.java)
         lifecycle.addObserver(mViewModel)
         initObserve()
-        initData(savedInstanceState)
-        initView(savedInstanceState)
-        loadData(savedInstanceState)
     }
 
     protected abstract fun createViewModel(): VM

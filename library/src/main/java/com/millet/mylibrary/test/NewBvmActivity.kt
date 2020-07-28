@@ -1,5 +1,6 @@
 package com.millet.mylibrary.test
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -7,6 +8,7 @@ import com.blankj.utilcode.util.ToastUtils
 import com.millet.mylibrary.mvvm.BaseBvmActivity
 import com.millet.mylibrary.R
 import com.millet.mylibrary.databinding.ActivityNewsBinding
+import kotlinx.android.synthetic.main.activity_news.*
 
 class NewBvmActivity : BaseBvmActivity<NewsViewModel, ActivityNewsBinding>() {
 
@@ -21,7 +23,13 @@ class NewBvmActivity : BaseBvmActivity<NewsViewModel, ActivityNewsBinding>() {
     }
 
     override fun initView(savedInstanceState: Bundle?) {
-
+        color_tv.text = ""
+        color_tv.appendText("1", Color.RED, 12)
+            .appendSpace()
+            .appendText("标题", Color.BLUE, 16, true)
+            .appendSpace()
+            .appendText("内容", Color.BLACK, 14)
+            .appendText("¥", Color.RED, 12)
     }
 
     override fun loadData(savedInstanceState: Bundle?) {

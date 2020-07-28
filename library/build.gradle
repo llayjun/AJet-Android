@@ -85,4 +85,5 @@ dependencies {
     api 'com.google.android:flexbox:2.0.1'
     // ds-bridge
     implementation 'com.github.wendux:DSBridge-Android:x5-3.0-SNAPSHOT'
+    implementation 'com.llayjun:colorfultext:1.0'
 }

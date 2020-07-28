@@ -34,5 +34,11 @@
             android:textSize="35pt"
             android:layout_height="wrap_content"/>
 
+        <com.llayjun.colorfultext.ColorfulText
+            android:id="@+id/color_tv"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="wrap_content"/>
+
     </LinearLayout>
 </layout>
