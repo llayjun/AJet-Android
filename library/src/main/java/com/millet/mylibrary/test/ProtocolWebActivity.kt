@@ -96,7 +96,7 @@ class ProtocolWebActivity : BaseBindingActivity<ActivityProtocolBinding>() {
         web_view.webChromeClient = object : WebChromeClient() {
 
             override fun onReceivedTitle(p0: com.tencent.smtt.sdk.WebView?, p1: String?) {
-                findViewById<HeadView>(R.id.head_view).setMiddleString(p1)
+//                findViewById<HeadView>(R.id.head_view).setMiddleString(p1)
             }
         }
     }

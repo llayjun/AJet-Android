@@ -11,11 +11,11 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.millet.mylibrary.ui.widget.HeadView
-            android:id="@+id/head_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:middle_text="标题" />
+<!--        <com.millet.mylibrary.ui.widget.HeadView-->
+<!--            android:id="@+id/head_view"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:middle_text="标题" />-->
 
         <wendu.dsbridge.DWebView
             android:id="@+id/web_view"

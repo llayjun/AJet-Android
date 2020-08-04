@@ -68,7 +68,7 @@ class NewsViewModel : BaseViewModel() {
 
     fun webViewClick() {
         ARouter.getInstance().build(ARouterPath.ProtocolWeb)
-            .withString(Constant.Key.WebViewUrl, "http://www.baidu.com").navigation()
+            .withString(Constant.Key.WebViewUrl, "http://192.168.3.103:8084/login").navigation()
     }
 
     override fun onCreate() {
