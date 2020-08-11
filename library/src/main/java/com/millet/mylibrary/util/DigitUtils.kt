@@ -1,4 +1,4 @@
-package org.we.fly.utils
+package com.millet.mylibrary.util
 
 import android.widget.EditText
 import java.math.RoundingMode

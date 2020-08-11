@@ -2,7 +2,7 @@ package com.lanba.tax
 
 import androidx.multidex.MultiDex
 import com.alibaba.android.arouter.launcher.ARouter
-import com.millet.mylibrary.mvvm.BaseApplication
+import com.millet.mylibrary.base.BaseApplication
 import com.tencent.mmkv.MMKV
 
 /**

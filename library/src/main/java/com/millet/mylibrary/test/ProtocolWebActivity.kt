@@ -11,11 +11,10 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.blankj.utilcode.util.ThreadUtils
 import com.millet.mylibrary.BuildConfig
 import com.millet.mylibrary.R
-import com.millet.mylibrary.mvvm.BaseBindingActivity
+import com.millet.mylibrary.base.activity.BaseBindingActivity
 import com.millet.mylibrary.constant.ARouterPath
 import com.millet.mylibrary.constant.Constant
 import com.millet.mylibrary.databinding.ActivityProtocolBinding
-import com.millet.mylibrary.ui.widget.HeadView
 import com.tencent.smtt.sdk.WebChromeClient
 import com.tencent.smtt.sdk.WebViewClient
 import kotlinx.android.synthetic.main.activity_protocol.*

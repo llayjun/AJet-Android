@@ -1,11 +1,10 @@
 package com.millet.mylibrary.test
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
 import com.alibaba.android.arouter.launcher.ARouter
 import com.millet.mylibrary.constant.ARouterPath
 import com.millet.mylibrary.constant.Constant
-import com.millet.mylibrary.mvvm.vm.BaseViewModel
+import com.millet.mylibrary.base.vm.BaseViewModel
 import com.millet.mylibrary.net.Api
 import kotlinx.coroutines.*
 

@@ -3,9 +3,8 @@ package com.millet.mylibrary.test
 import android.graphics.Color
 import android.os.Bundle
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.blankj.utilcode.util.ToastUtils
-import com.millet.mylibrary.mvvm.BaseBvmActivity
+import com.millet.mylibrary.base.activity.BaseBvmActivity
 import com.millet.mylibrary.R
 import com.millet.mylibrary.databinding.ActivityNewsBinding
 import kotlinx.android.synthetic.main.activity_news.*
