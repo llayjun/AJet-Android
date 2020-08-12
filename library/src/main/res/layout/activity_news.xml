@@ -40,5 +40,11 @@
             android:gravity="center"
             android:layout_height="wrap_content"/>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/ry_view"
+            android:layout_width="match_parent"
+            tools:listitem="@layout/item_rv"
+            android:layout_height="500pt"/>
+
     </LinearLayout>
 </layout>

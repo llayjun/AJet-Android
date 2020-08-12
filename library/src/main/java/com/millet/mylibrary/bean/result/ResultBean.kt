@@ -29,4 +29,13 @@ data class PersonUserInfoBean(
     val nickName: String,
     val sex: Int,
     val userId: Int
-)
+) {
+    val sexType: String
+        get() {
+            return when (sex) {
+                1 -> "男"
+                2 -> "女"
+                else -> "秘密"
+            }
+        }
+}
