@@ -1,11 +1,10 @@
-package org.we.fly.base.ui.dialog
+package com.millet.mylibrary.base.ui.dialog
 
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import com.millet.mylibrary.base.ui.dialog.BaseDialog
 
 /**
  * @author: Albert Li
