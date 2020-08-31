@@ -1,7 +1,9 @@
 package com.millet.mylibrary.base.ui.dialog
 
 import android.content.Context
+import android.graphics.Point
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.view.Gravity
 import android.view.ViewGroup
 import android.view.WindowManager
@@ -18,12 +20,13 @@ import androidx.appcompat.app.AppCompatDialog
  * @since: 1.0.0
  */
 abstract class BaseDialog : AppCompatDialog {
-    private var width: Int = ViewGroup.LayoutParams.MATCH_PARENT
-    private var height: Int = ViewGroup.LayoutParams.WRAP_CONTENT
-    private var gravity: Int = Gravity.CENTER
-    private var animRes: Int = -1
-    private var dimAmount: Float = 0.5f
-    private var alpha: Float = 1f
+
+    private var dimAmount: Float = 0.5f // 背景默认透明度
+    private var widthPer: Float = 0f // 宽度屏幕占比
+    private var heightPer: Float = 0f // 高度屏幕占比
+    private var gravity: Int = Gravity.CENTER // 位置
+    private var animRes: Int = -1 // 动画
+    private var alpha: Float = 1f // 控件透明度
 
     constructor(context: Context) : super(context)
 
@@ -43,15 +46,15 @@ abstract class BaseDialog : AppCompatDialog {
     /**
      * 设置宽度
      */
-    fun setWidth(width: Int) {
-        this.width = width
+    fun setWidthPer(widthPer: Float) {
+        this.widthPer = widthPer
     }
 
     /**
      * 设置高度
      */
-    fun setHeight(height: Int) {
-        this.height = height
+    fun setHeightPer(heightPer: Float) {
+        this.heightPer = heightPer
     }
 
     /**
@@ -88,14 +91,32 @@ abstract class BaseDialog : AppCompatDialog {
      */
     fun refreshAttributes() {
         window!!.let {
-            val params: WindowManager.LayoutParams = it.getAttributes()
-            params.width = width
-            params.height = height
+            var _dimAmount: Float = dimAmount
+            if (dimAmount < 0f) {
+                _dimAmount = 0f
+            }
+            if (dimAmount > 1f) {
+                _dimAmount = 1f
+            }
+            val params: WindowManager.LayoutParams = it.attributes
             params.gravity = gravity
             params.windowAnimations = animRes
-            params.dimAmount = dimAmount
+            params.dimAmount = _dimAmount
+            params.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND
             params.alpha = alpha
-            params.windowAnimations = animRes
+            // 设置宽高
+            var widthParams = ViewGroup.LayoutParams.WRAP_CONTENT
+            var heightParams = ViewGroup.LayoutParams.WRAP_CONTENT
+            val point = Point()
+            it.windowManager.defaultDisplay.getSize(point)
+            if (widthPer > 0) {
+                widthParams = (point.x * widthPer).toInt()
+            }
+            if (heightPer > 0) {
+                heightParams = (point.y * heightPer).toInt()
+            }
+            params.width = widthParams
+            params.height = heightParams
             it.attributes = params
         }
     }

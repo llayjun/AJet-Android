@@ -1,11 +1,10 @@
 package com.millet.mylibrary.base.ui.dialog
 
-import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.view.*
 import androidx.annotation.FloatRange
 import androidx.annotation.LayoutRes
-import androidx.annotation.StyleRes
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
@@ -23,14 +22,19 @@ import com.millet.mylibrary.R
 abstract class BaseDialogFragment : DialogFragment() {
     protected lateinit var rootView: View
 
-    private var width: Int = ViewGroup.LayoutParams.MATCH_PARENT
-    private var height: Int = ViewGroup.LayoutParams.WRAP_CONTENT
-    private var gravity: Int = Gravity.CENTER
-    private var animRes: Int = -1
-    private var dimAmount: Float = 0.5f
-    private var alpha: Float = 1f
+    private var dimAmount: Float = 0.5f // 背景默认透明度
+    private var widthPer: Float = 0f // 宽度屏幕占比
+    private var heightPer: Float = 0f // 高度屏幕占比
+    private var gravity: Int = Gravity.CENTER // 位置
+    private var animRes: Int = -1 // 动画
+    private var alpha: Float = 1f // 控件透明度
 
-    @SuppressLint("ResourceType")
+    override fun onStart() {
+        // 在super之前执行，因为super.onStart()中dialog会执行自己的show方法
+        refreshAttributes()
+        super.onStart()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setStyle(
@@ -53,24 +57,18 @@ abstract class BaseDialogFragment : DialogFragment() {
         initialize(view, savedInstanceState)
     }
 
-    override fun onStart() {
-        // 在super之前执行，因为super.onStart()中dialog会执行自己的show方法
-        refreshAttributes()
-        super.onStart()
-    }
-
     /**
      * 设置宽度
      */
-    fun setWidth(width: Int) {
-        this.width = width
+    fun setWidthPer(widthPer: Float) {
+        this.widthPer = widthPer
     }
 
     /**
      * 设置高度
      */
-    fun setHeight(height: Int) {
-        this.height = height
+    fun setHeightPer(heightPer: Float) {
+        this.heightPer = heightPer
     }
 
     /**
@@ -88,7 +86,7 @@ abstract class BaseDialogFragment : DialogFragment() {
     }
 
     /**
-     * 设置背景透明度
+     * 设置控件背景透明度
      */
     fun setAlpha(@FloatRange(from = 0.0, to = 1.0) alpha: Float) {
         this.alpha = alpha
@@ -105,25 +103,39 @@ abstract class BaseDialogFragment : DialogFragment() {
      * 刷新属性
      */
     private fun refreshAttributes() {
-        if (dialog != null) {
-            dialog!!.window!!.let {
-                val params: WindowManager.LayoutParams = it.getAttributes()
-                params.width = width
-                params.height = height
-                params.gravity = gravity
-                params.windowAnimations = animRes
-                params.dimAmount = dimAmount
-                params.alpha = alpha
-                params.windowAnimations = animRes
-                it.attributes = params
+        dialog?.window?.let {
+            var _dimAmount: Float = dimAmount
+            if (dimAmount < 0f) {
+                _dimAmount = 0f
             }
+            if (dimAmount > 1f) {
+                _dimAmount = 1f
+            }
+            val params: WindowManager.LayoutParams = it.attributes
+            params.gravity = gravity
+            params.windowAnimations = animRes
+            params.dimAmount = _dimAmount
+            params.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND
+            params.alpha = alpha
+            it.attributes = params
+            // 设置宽高
+            var widthParams = ViewGroup.LayoutParams.WRAP_CONTENT
+            var heightParams = ViewGroup.LayoutParams.WRAP_CONTENT
+            val dm = DisplayMetrics()
+            activity?.windowManager?.defaultDisplay?.getMetrics(dm)
+            if (widthPer > 0) {
+                widthParams = (dm.widthPixels * widthPer).toInt()
+            }
+            if (heightPer > 0) {
+                heightParams = (dm.heightPixels * heightPer).toInt()
+            }
+            it.setLayout(widthParams, heightParams)
         }
     }
 
-    protected abstract fun getDialogStyle(): Int?
+    open fun getDialogStyle(): Int? = null
 
-    @StyleRes
-    protected abstract fun getDialogTheme(): Int?
+    open fun getDialogTheme(): Int? = null
 
     @LayoutRes
     protected abstract fun getLayoutId(): Int

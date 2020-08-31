@@ -1,7 +1,6 @@
 package com.millet.mylibrary.base.ui.dialog
 
 import android.content.Context
-import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
@@ -14,17 +13,12 @@ import androidx.databinding.ViewDataBinding
  * @since: 1.0.0
  */
 abstract class BaseBindingDialog<B : ViewDataBinding> : BaseDialog {
+
     protected lateinit var binding: B
 
     constructor(context: Context) : super(context)
 
     constructor(context: Context, themeResId: Int) : super(context, themeResId)
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        initialize(savedInstanceState)
-        refreshAttributes()
-    }
 
     override fun initContentView() {
         binding = DataBindingUtil.inflate(
