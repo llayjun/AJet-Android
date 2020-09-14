@@ -16,20 +16,20 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{personUserInfoBean.nickName, default = ahaa}"
+            android:text="@{personUserInfoBean.nickName}"
             android:textSize="40pt" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{personUserInfoBean.birth, default = ahaa}"
+            android:text="@{personUserInfoBean.birth}"
             android:textSize="40pt" />
 
         <TextView
             android:id="@+id/tv_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{personUserInfoBean.sexType, default = 男}"
+            android:text="@{personUserInfoBean.sexType}"
             android:textSize="40pt" />
 
     </LinearLayout>
