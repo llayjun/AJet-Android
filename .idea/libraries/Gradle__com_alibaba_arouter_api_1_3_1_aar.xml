@@ -1,11 +1,12 @@
 <component name="libraryTable">
   <library name="Gradle: com.alibaba:arouter-api:1.3.1@aar">
     <ANNOTATIONS>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/2a1d294be2b3abbb8e373dfb8709a00e/jetified-arouter-api-1.3.1/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/274c22545fefaf13c3440bb18bd42f3b/jetified-arouter-api-1.3.1/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/2a1d294be2b3abbb8e373dfb8709a00e/jetified-arouter-api-1.3.1/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/2a1d294be2b3abbb8e373dfb8709a00e/jetified-arouter-api-1.3.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/274c22545fefaf13c3440bb18bd42f3b/jetified-arouter-api-1.3.1/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/274c22545fefaf13c3440bb18bd42f3b/jetified-arouter-api-1.3.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/274c22545fefaf13c3440bb18bd42f3b/jetified-arouter-api-1.3.1/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.alibaba/arouter-api/1.3.1/fa9c53aabf83a55ffeb389e275e42ed343c00f97/arouter-api-1.3.1-javadoc.jar!/" />

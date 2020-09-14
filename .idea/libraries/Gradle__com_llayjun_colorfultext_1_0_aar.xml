@@ -1,8 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.llayjun:colorfultext:1.0@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b6d070163f2a810fcf900ad56d4d0484/jetified-colorfultext-1.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b6d070163f2a810fcf900ad56d4d0484/jetified-colorfultext-1.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e6b7a1d5a235bc0f4ce648165fe29b2e/jetified-colorfultext-1.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e6b7a1d5a235bc0f4ce648165fe29b2e/jetified-colorfultext-1.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e6b7a1d5a235bc0f4ce648165fe29b2e/jetified-colorfultext-1.0/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.llayjun/colorfultext/1.0/6dc8c7e464ee760cd614861f718156f082d0ae1c/colorfultext-1.0-javadoc.jar!/" />

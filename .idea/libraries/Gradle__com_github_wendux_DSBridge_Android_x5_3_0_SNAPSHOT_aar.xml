@@ -1,12 +1,13 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.wendux:DSBridge-Android:x5-3.0-SNAPSHOT@aar">
     <ANNOTATIONS>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1478cacd190f7c065c4b72e92ee62708/jetified-DSBridge-Android-x5-3.0-SNAPSHOT/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8c29c2491ad7dc1633a7b9cd40c16596/jetified-DSBridge-Android-x5-3.0-SNAPSHOT/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1478cacd190f7c065c4b72e92ee62708/jetified-DSBridge-Android-x5-3.0-SNAPSHOT/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1478cacd190f7c065c4b72e92ee62708/jetified-DSBridge-Android-x5-3.0-SNAPSHOT/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1478cacd190f7c065c4b72e92ee62708/jetified-DSBridge-Android-x5-3.0-SNAPSHOT/jars/libs/tbs_sdk_thirdapp_v3.6.0.1325_43613_sharewithdownload_withoutGame_obfs_20180807_151115.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8c29c2491ad7dc1633a7b9cd40c16596/jetified-DSBridge-Android-x5-3.0-SNAPSHOT/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8c29c2491ad7dc1633a7b9cd40c16596/jetified-DSBridge-Android-x5-3.0-SNAPSHOT/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8c29c2491ad7dc1633a7b9cd40c16596/jetified-DSBridge-Android-x5-3.0-SNAPSHOT/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8c29c2491ad7dc1633a7b9cd40c16596/jetified-DSBridge-Android-x5-3.0-SNAPSHOT/jars/libs/tbs_sdk_thirdapp_v3.6.0.1325_43613_sharewithdownload_withoutGame_obfs_20180807_151115.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
