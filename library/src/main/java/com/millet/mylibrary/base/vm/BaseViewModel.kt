@@ -5,10 +5,7 @@ import com.millet.mylibrary.bean.DialogBean
 import com.millet.mylibrary.base.ViewModelLifecycle
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 /**
  * BaseViewModel
@@ -39,8 +36,8 @@ abstract class BaseViewModel : ViewModel(), ViewModelLifecycle {
         block: suspend CoroutineScope.() -> Unit = {}
         , error: suspend CoroutineScope.(Throwable) -> Unit = {}
         , complete: suspend CoroutineScope.() -> Unit = {}
-    ) {
-        viewModelScope.launch(Dispatchers.Main) {
+    ): Job {
+      return viewModelScope.launch(Dispatchers.Main) {
             try {
                 mShowDialog.setValue(true)
                 block()
